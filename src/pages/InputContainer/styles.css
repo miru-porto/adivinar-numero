@@ -17,8 +17,29 @@
 
 .input-parrafo {
   background-color: #ffeda3;
-  margin: 4px 0 16px;
-  font-weight: 400;
+  margin: 4px 0 ;
+  font-weight: 500;
+}
+
+.input-tries {
+  background-color: #ffeda3;
+  font-weight: 500;
+}
+
+.input-intentos {
+  background-color: #ffeda3;
+  color: red;
+}
+.input-pista{
+  background-color: #ffeda3;
+  margin: 10px 0;
+  font-weight: 500;
+}
+
+.input-btnOportunidad{
+  background-color: #ffd8cc;
+  border: 1px solid #000;
+  margin: 10px 0;
 }
 
 .input-label {
@@ -41,4 +62,9 @@
 .input-result {
   background-color: #ffeda3;
   font-weight: 500;
+}
+
+.input-imgTristeza{
+  background-color: #ffeda3;
+  width: 300px;
 }

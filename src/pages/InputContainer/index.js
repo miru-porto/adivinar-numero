@@ -7,9 +7,22 @@ const InputContainer = () => {
 
   const [tries, setTries] = useState(0);
 
+  const [posible, setPosible] = useState(false);
+
   const [form, setForm] = useState({
     numero: "",
   });
+
+  //abajo 1er input
+  const [priInput, setPriInput] = useState({
+    respuesta: "",
+  });
+
+  const vaciar = () => {
+    const { respuesta } = priInput;
+    return [respuesta].includes("");
+  };
+  //se termina
 
   const fieldEmpty = () => {
     const { numero } = form;
@@ -34,8 +47,8 @@ const InputContainer = () => {
   };
 
   const oportunidadClick = (evt) => {
-    return <p>Aca va la propuesta nueva</p>;
     console.log("aca actua el onClick");
+    setPosible(true);
   };
 
   if (tries >= 20) {
@@ -66,6 +79,32 @@ const InputContainer = () => {
       );
     }
   };
+
+  if (posible) {
+    return (
+      <>
+        <div className="input">
+          <p className="input-pista">Aca va la propuesta nueva</p>
+          <img src="https://firebasestorage.googleapis.com/v0/b/coderhouse-bijouterie.appspot.com/o/desafio.jpeg?alt=media&token=f5cd60fa-185a-4fde-b535-55b5a445fb55" />
+
+          <label className="input-parrafo">
+            a x=
+            <input placeholder="Escriba aqui" className="input-label" />
+          </label>
+          <label className="input-parrafo">
+            b x=
+            <input placeholder="Escriba aqui" className="input-label" />
+          </label>
+          <input
+            className="input-btn"
+            type="submit"
+            disabled={vaciar()}
+            //hacer propiedad disables para desactivar el btn cuando el input este vacio y un onClick para cambiar de pagina
+          />
+        </div>
+      </>
+    );
+  }
 
   return (
     <>

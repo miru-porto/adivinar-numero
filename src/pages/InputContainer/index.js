@@ -16,12 +16,14 @@ const InputContainer = () => {
   //abajo 1er input
   const [priInput, setPriInput] = useState({
     respuesta: "",
+    respuesta2: "",
   });
 
   const vaciar = () => {
-    const { respuesta } = priInput;
-    return [respuesta].includes("");
+    const { respuesta, respuesta2 } = priInput;
+    return [respuesta, respuesta2].includes("");
   };
+
   //se termina
 
   const fieldEmpty = () => {
@@ -40,10 +42,20 @@ const InputContainer = () => {
     }
   };
 
+  const noClick = (ev) => {
+    console.log('funcion noClick')
+  }
+
   const handleChange = (numero, evt) => {
     const value = evt.target.value;
     const formData = { ...form, numero: value };
     setForm(formData);
+  };
+  //nuevo
+  const rtaChange = (respuesta, evt) => {
+    const valor = evt.target.value;
+    const input = { ...priInput, respuesta: valor, respuesta2: valor };
+    setPriInput(input)
   };
 
   const oportunidadClick = (evt) => {
@@ -74,7 +86,7 @@ const InputContainer = () => {
           className="input-btnOportunidad"
           type="submit"
           onClick={(evt) => oportunidadClick(evt)}
-          value="¿Querés otra oportunidad?"
+          value="Estás a punto de perder, ¿Querés otra oportunidad?"
         />
       );
     }
@@ -89,17 +101,30 @@ const InputContainer = () => {
 
           <label className="input-parrafo">
             a x=
-            <input placeholder="Escriba aqui" className="input-label" />
+            <input
+              placeholder="Escriba aqui"
+              className="input-label"
+              onChange={(evt) => {
+                rtaChange("respuesta", evt);
+              }}
+            />
           </label>
           <label className="input-parrafo">
             b x=
-            <input placeholder="Escriba aqui" className="input-label" />
+            <input
+              placeholder="Escriba aqui"
+              className="input-label"
+              onChange={(evt) => {
+                rtaChange("respuesta", evt);
+              }}
+            />
           </label>
           <input
             className="input-btn"
             type="submit"
+            onClick={(ev) => noClick(ev)}
             disabled={vaciar()}
-            //hacer propiedad disables para desactivar el btn cuando el input este vacio y un onClick para cambiar de pagina
+            //NO FUNCIONAN EL BTN ENVIAR CUANDO EL INPUT ESTA VACIO
           />
         </div>
       </>
